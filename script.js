@@ -69,17 +69,23 @@ function Screen0() {
   Play.color = "#FDFD96";
   Play.textSize = 35;
   Play.text = "Play";
+
+  if(Play.mouse.pressing())
+    { 
+      print("1");
+      Screen1();
+    }
 }
 
 
 // Screen 1
 //Show groups of people planting plants
 function Screen1(){
-  Button = new Sprite (200, 300, 100,50,"k");
+  Button = new Sprite (100, 300, 100,50,"k");
   Button.color = "#FDFD96";
   Button.textSize = 35;
   Button.text = "Next";
-  Petals.position(x:-50, y:-50);
+  Petals.x = -200;
 }
 
 // Screen 2
