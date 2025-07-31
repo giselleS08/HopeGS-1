@@ -20,13 +20,26 @@ let allow7 = true;
 let allow8 = true;
 let allow9 = true;
 let allow10 = true;
-let position = 0;
 
+let allows1 = true;
+let allows2 = true;
+let allows3 = true;
+let allows4 = true;
+let allows5 = true;
+let allows6 = true;
+let allows7 = true;
+let allows8 = true;
+let allows9 = true;
+let allows10 = true;
+let position = 0;
+let bgImg;
+let bgImg2;
 
 
 /* PRELOAD LOADS FILES */
 function preload(){
-  
+  bgImg = loadImage("assets/rain.png");
+  bgImg2 = loadImage("assets/star.png");
 }
 
 /* SETUP RUNS ONCE */
@@ -64,7 +77,50 @@ function setup() {
     s:color(45,54,72),
     d:color(185,165,137)
   };
-      
+
+
+
+
+  let mainFlowerText = `
+  ...........aaa
+  .....aaaasssaaaa.aaa
+  ....asssasddasssasssa
+  ....asddasdffddsaddsa
+  .aaaasdfaaffffdsaaasa
+  .asssaaaasssaaaaasssaaaa
+  .asdasssaddsasssaddsasssa
+  .asdasddffdsasddffdsaddsa
+  ..aaasdfaafaasdfaafaafdsa
+  .asssaafaafdsaafaafdsaaaa
+  .asddasdffddsasdffddsasssa
+  .asdfasddasssasddasssfddsa
+  .aaffasssaaaaasssaaaaffdsa
+  asdffaaaasssaaaaasssaffaa
+  asddfsssaddsasssaddsafdsa
+  asssasddffdsasddffdsaddsa
+  .aaaasdfaafaasdfaafaasssa
+  .asdfaafaafdsaafaafdsaaa
+  .asddasdffddsasdffddsadsa
+  .asssasddasssasddasssadsa
+  ..aaaasssaaaaasssaaaasssa
+  ....asaaasdffffaafdsaaaa
+  ....asddasddffdsaddsa
+  ....asssasssaddsasssa
+  .....aaa.aaaasssaaaa
+  .............aaa`;
+
+  let palette1 = {
+    a: color(51,56,99),//dark
+
+    s:color(118,188,239),//cyanlike
+    d:color(86,149,234),//neutral blue
+    f:color(55,96,193)//gray/dark blue
+  };
+
+      mainFlower = new Sprite();
+        mainFlower.img = spriteArt(mainFlowerText, 12, palette1);
+        mainFlower.y=-300;
+        mainFlower.rotation =0;
   
  screen = 0;
   let goose = `
@@ -88,6 +144,27 @@ function setup() {
     goosee.x=-1000;
     goosee.rotation =0;
 
+  let gooseCry = `
+  ....bbb
+  .baaab
+  boobab
+  .bbatb
+  ..baab
+  ..baab
+  ..baab
+  .baaabb
+  .baaaaabb
+  .baaaaaaab
+  ..baaaaab
+  ...bbbbb
+  ..boobob
+  ..bbbbbb`;
+
+    goosee2 = new Sprite();
+    goosee2.img = spriteArt(gooseCry, 7);
+    goosee2.x=-700;
+    goosee2.rotation =0;
+
   Muds = new Sprite();
   Muds.img = spriteArt(PeskyDirtText, 5, palette3);
   Muds.x=-1000;
@@ -98,15 +175,56 @@ function setup() {
       PeskyDirt1.rotation =0;
 
 
+  Mean1 = new Sprite();
+    Mean1.img = spriteArt(PeskyDirtText, 9, palette3);
+    Mean1.x=-900;
+    Mean1.rotation =0;
+    Mean2 = new Sprite();
+    Mean2.img = spriteArt(PeskyDirtText, 9, palette3);
+    Mean2.x=-900;
+    Mean2.rotation =0;
+    Mean3 = new Sprite();
+    Mean3.img = spriteArt(PeskyDirtText, 9, palette3);
+    Mean3.x=-900;
+    Mean3.rotation =0;
+
   PeskyDirt2 = new Sprite();
   PeskyDirt2.img = spriteArt(PeskyDirtText, 6, palette3);
   PeskyDirt2.x=-100;
   PeskyDirt2.rotation =0;
+  little1 = new Sprite();
+    little1.img = spriteArt(PeskyDirtText, 2, palette3);
+    little1.x=-500;
+    little1.rotation =0;
 
+  little2 = new Sprite();
+  little2.img = spriteArt(PeskyDirtText, 2, palette3);
+  little2.x=-500;
+  little2.rotation =0;
+
+  little3 = new Sprite();
+  little3.img = spriteArt(PeskyDirtText, 2, palette3);
+  little3.x=-500;
+  little3.rotation =0;
+
+  little4 = new Sprite();
+  little4.img = spriteArt(PeskyDirtText, 2, palette3);
+  little4.x=-500;
+  little4.rotation =0;
+
+  little5 = new Sprite();
+  little5.img = spriteArt(PeskyDirtText, 2, palette3);
+  little5.x=-500;
+  little5.rotation =0;
+
+  little6 = new Sprite();
+  little6.img = spriteArt(PeskyDirtText, 2, palette3);
+  little6.x=-500;
+  little6.rotation =0;
 
   PeskyDirt3 = new Sprite();
   PeskyDirt3.img = spriteArt(PeskyDirtText, 6, palette3);
-  PeskyDirt3.x=-100;
+  PeskyDirt3.x=-500;
   PeskyDirt3.rotation =0;
 
   PeskyDirt4 = new Sprite();
@@ -291,6 +409,11 @@ function setup() {
     rose.y=-1000;
     rose.rotation =0;
 
+  rose2 = new Sprite();
+  rose2.img = spriteArt(flower1, 5);
+  rose2.y=-1000;
+  rose2.rotation =0;
+
 
   let flower3 = `
   ...sss
@@ -315,6 +438,8 @@ function setup() {
       little.img = spriteArt(flower3, 4, palette);
       little.y=1900;
       little.rotation =0;
+  little.collider = "kinematic";
+  little1.collider = "kinematic";
 
 
   let flower2 = `
@@ -337,51 +462,20 @@ function setup() {
       pinkflower.img = spriteArt(flower2, 5);
       pinkflower.y=1200;
       pinkflower.rotation =0;
+  pinkflower2 = new Sprite();
+  pinkflower2.img = spriteArt(flower2, 5);
+  pinkflower2.y=1200;
+  pinkflower2.rotation =0;
+  pinkflower3 = new Sprite();
+  pinkflower3.img = spriteArt(flower2, 5);
+  pinkflower3.y=1200;
+  pinkflower3.rotation =0;
+
+  
 
 
 
-
-
-  let mainFlowerText = `
-  ...........aaa
-  .....aaaasssaaaa.aaa
-  ....asssasddasssasssa
-  ....asddasdffddsaddsa
-  .aaaasdfaaffffdsaaasa
-  .asssaaaasssaaaaasssaaaa
-  .asdasssaddsasssaddsasssa
-  .asdasddffdsasddffdsaddsa
-  ..aaasdfaafaasdfaafaafdsa
-  .asssaafaafdsaafaafdsaaaa
-  .asddasdffddsasdffddsasssa
-  .asdfasddasssasddasssfddsa
-  .aaffasssaaaaasssaaaaffdsa
-  asdffaaaasssaaaaasssaffaa
-  asddfsssaddsasssaddsafdsa
-  asssasddffdsasddffdsaddsa
-  .aaaasdfaafaasdfaafaasssa
-  .asdfaafaafdsaafaafdsaaa
-  .asddasdffddsasdffddsadsa
-  .asssasddasssasddasssadsa
-  ..aaaasssaaaaasssaaaasssa
-  ....asaaasdffffaafdsaaaa
-  ....asddasddffdsaddsa
-  ....asssasssaddsasssa
-  .....aaa.aaaasssaaaa
-  .............aaa`;
-
-  let palette1 = {
-    a: color(51,56,99),//dark
-    
-    s:color(118,188,239),//cyanlike
-    d:color(86,149,234),//neutral blue
-    f:color(55,96,193)//gray/dark blue
-  };
-
-      mainFlower = new Sprite();
-        mainFlower.img = spriteArt(mainFlowerText, 6, palette1);
-        mainFlower.y=8100;
-        mainFlower.rotation =0;
+  
 
 
   let sunText = `
@@ -476,7 +570,8 @@ function draw() {
     }
    else if (screen == 3)
     {
-      Screen21();
+      Screen3();
+      
 
     }
    else if (screen == 4)
@@ -639,6 +734,10 @@ function draw() {
    else if (screen == 21)
     {
       Screen21();
+      if ( allows1 == false && allows2 == false && allows3 == false && allows4 == false && allows5 == false && allows6 == false && allows7 == false && allows8 == false && allows9 == false && allows10 == false)
+        {
+          screen+=1;
+        }
     }
    else if (screen == 22)
     {
@@ -660,14 +759,6 @@ function draw() {
     {
       Screen26();
     }
-   else if (screen == 27)
-    {
-      Screen27();
-    } 
-   else if (screen == 28)
-    {
-      Screen28();
-    }
   print(screen);
 
   
@@ -677,6 +768,7 @@ function draw() {
 
 function Screen0(){
   background(253, 253, 150);
+  fill("black");
   textSize(20);
  text("Click the flower to start!", 100,375);
   textSize(30);
@@ -693,10 +785,18 @@ function Screen1(){
     playButton.pos = {x:-100,y:-1090};
   //pinkflower,rose
 
-  pinkflower.pos={x:115, y: 60};
-  pinkflower.rotation = 0;
-  rose.pos={x:115, y: 155};
-  rose.rotation = 0;
+    little1.pos={x:115, y: 75};
+    little1.rotation = 0;
+    little2.pos={x:115, y: 170};
+    little2.rotation = 0;
+  little3.pos={x:115, y: 265};
+  little3.rotation = 0;
+  little4.pos={x:250, y: 75};
+  little4.rotation = 0;
+  little5.pos={x:250, y: 170};
+  little5.rotation = 0;
+  little6.pos={x:250, y: 265};
+  little6.rotation = 0;
 
   dinu.pos={x:40, y: 50};
   dinu.rotation = 0;
@@ -709,8 +809,6 @@ function Screen1(){
   bara.rotation =0;
   goosee.pos={x:330, y: 255};
   goosee.rotation =0;
-  little.pos={x:265, y: 280};
-  little.rotation =0;
 }
 
 // Screen 2
@@ -723,11 +821,25 @@ function Screen2(){
   bara.pos={x:330, y:-50};
   goosee.pos={x:330, y: -255};
 
+
+  little1.pos={x:140, y: 230};
+    little1.rotation = 0;
+    little2.pos={x:115, y: -170};
+    little2.rotation = 0;
+  little3.pos={x:115, y: -265};
+  little3.rotation = 0;
+  little4.pos={x:250, y: -75};
+  little4.rotation = 0;
+  little5.pos={x:250, y: -170};
+  little5.rotation = 0;
+  little6.pos={x:250, y: -265};
+  little6.rotation = 0;
+  
   pinkflower.pos={x:115, y: -60};
   rose.pos={x:115, y: -155};
   goosee.pos={x:225, y: 200};
   goosee.rotation =0;
-  little.pos={x:160, y: 230};
+  little.pos={x:160, y: -230};
   little.rotation =0;
   text("One day, a goose named Goosé \nreally wanted her seed to grow \ninto a beautiful and healthy flower.", 10, 330 );
 }
@@ -735,10 +847,18 @@ function Screen2(){
 // Screen 3
 //everyone's is waiting
 function Screen3(){
-  pinkflower.pos={x:115, y: 60};
-  pinkflower.rotation = 0;
-  rose.pos={x:115, y: 155};
-  rose.rotation = 0;
+  little1.pos={x:115, y: 75};
+    little1.rotation = 0;
+    little2.pos={x:115, y: 170};
+    little2.rotation = 0;
+  little3.pos={x:115, y: 265};
+  little3.rotation = 0;
+  little4.pos={x:250, y: 75};
+  little4.rotation = 0;
+  little5.pos={x:250, y: 170};
+  little5.rotation = 0;
+  little6.pos={x:250, y: 265};
+  little6.rotation = 0;
 
   dinu.pos={x:40, y: 50};
   dinu.rotation = 0;
@@ -747,12 +867,12 @@ function Screen3(){
   slow.pos={x:330, y: 160};
   slow.rotation =0;
   cat.pos={x:40, y: 255};
+  cat.rotation =0;
   bara.pos={x:330, y: 50};
   bara.rotation =0;
   goosee.pos={x:330, y: 255};
   goosee.rotation =0;
-  little.pos={x:265, y: 280};
-  little.rotation =0;
+  
   text("Everybody waited for their \nseeds to grow...", 10, 350 );
 }
 
@@ -764,6 +884,7 @@ function Screen4(){
   rose.pos={x:115, y: 155};
   rose.rotation = 0;
 
+  
   dinu.pos={x:40, y: 50};
   dinu.rotation = 0;
   busy.pos={x:40, y: 150};
@@ -775,8 +896,29 @@ function Screen4(){
   bara.rotation =0;
   goosee.pos={x:330, y: 255};
   goosee.rotation =0;
-  little.pos={x:265, y: 280};
-  little.rotation =0;
+
+  little1.pos={x:250, y: 265};
+    little1.rotation = 0;
+    little2.pos={x:115, y: -170};
+    little2.rotation = 0;
+  little3.pos={x:115, y: -265};
+  little3.rotation = 0;
+  little4.pos={x:250, y: -75};
+  little4.rotation = 0;
+  little5.pos={x:250, y: -170};
+  little5.rotation = 0;
+  little6.pos={x:250, y: -265};
+  little6.rotation = 0;
+
+  //rose2,pinkflower2,pinkflower3
+  pinkflower2.pos={x:250, y: 60};
+  pinkflower2.rotation = 0;
+  rose2.pos={x:250, y: 155};
+  rose2.rotation = 0;
+  pinkflower3.pos={x:115, y: 265};
+  pinkflower3.rotation = 0;
+
+  
   text("...and eventually, everybody's \nplants began to grow into beautiful \nflowers, all except for Goosé's \nseedling (つ﹏<。)", 10, 325 );
 }
 
@@ -799,8 +941,6 @@ function Screen5(){
   bara.rotation =0;
   goosee.pos={x:330, y: 255};
   goosee.rotation =0;
-  little.pos={x:265, y: 280};
-  little.rotation =0;
   text("Since Goosé's seed didn't show \nany signs of growth, everyone\nmade fun of Goosé.", 10, 330 );
 
 }
@@ -809,20 +949,40 @@ function Screen5(){
 //scene full of haha's
 function Screen6(){
 
-  dinu.pos={x:40, y: 50};
+  dinu.pos={x:100, y: 255};
   dinu.rotation = 0;
-  busy.pos={x:40, y: 150};
+  busy.pos={x:240, y: 255};
   busy.rotation =0;
-  slow.pos={x:330, y: 160};
+  slow.pos={x:170, y: 255};
   slow.rotation =0;
   cat.pos={x:40, y: 255};
-  bara.pos={x:330, y: 50};
+  cat.rotation =0;
+  bara.pos={x:330, y: 255};
   bara.rotation =0;
-  goosee.pos={x:330, y: 255};
+  goosee.pos={x:-330, y: 255};
   goosee.rotation =0;
-  little.pos={x:265, y: 280};
+  little.pos={x:-265, y: 280};
   little.rotation =0;
-  text("add haha's scene", 10, 330 );
+
+  
+  pinkflower2.pos={x:-250, y: -60};
+  pinkflower2.rotation = 0;
+  rose2.pos={x:-250, y: -155};
+  rose2.rotation = 0;
+  pinkflower3.pos={x:-115, y: -265};
+  pinkflower3.rotation = 0;
+  pinkflower.pos={x:-115, y: -60};
+  pinkflower.rotation = 0;
+  rose.pos={x:-115, y: -155};
+  rose.rotation = 0;
+  little1.pos={x:-250, y: -265};
+  little1.rotation = 0;
+
+  text("hahaha", 200, 50 );
+  text("loser", 10, 100 );
+  text("your seed will never grow", 70, 150 );
+  text("foolish", 10, 350 );
+  text("waste of time on a seed", 20, 390 );
 
 }
 
@@ -833,7 +993,7 @@ function Screen7(){
   busy.pos={x:40, y: -150};
   slow.pos={x:330, y: -160};
   cat.pos={x:40, y: -255};
-  bara.pos={x:330, y:-50};
+  bara.pos={x:-330, y:-50};
   goosee.pos={x:330, y: -255};
 
   pinkflower.pos={x:115, y: -60};
@@ -842,6 +1002,11 @@ function Screen7(){
   goosee.rotation =0;
   little.pos={x:160, y: -230};
   little.rotation =0;
+  
+
+  Mean1.pos={x:200, y: 200};
+    Mean2.pos={x:300, y: 200};
+    Mean3.pos={x:100, y: 200};
   text("These hateful comments about \nGoosé's plant turned to balls of \nnegative mud ˙◠˙", 10, 330 );
 
 }
@@ -853,11 +1018,15 @@ function Screen8(){
   Button.pos = {x:-300, y:-300};
   Barrier.y=300;
 
-  
+  Mean1.pos={x:-200, y: -200};
+  Mean2.pos={x:-300, y: -200};
+  Mean3.pos={x:-100, y: -200};
   textSize(15);
   text("Score: "+ score, 10, 15);
   
   text("Collect mud \nballs to \nprotect the \nplant", 310, 15);
+  textSize(18);
+  text("Use left and right arrow keys \nto move green barrier", 50, 370);
   
 }
 
@@ -877,11 +1046,10 @@ function Screen9(){
   rose.pos={x:115, y: -155};
   goosee.pos={x:225, y: 200};
   goosee.rotation =0;
-  little.pos={x:160, y: 230};
-  little.rotation =0;
   Muds.pos = { x: 240, y: 200 };
   Muds.rotation = 0;
-  
+  little1.pos={x:140, y: 230};
+  little1.rotation = 0;
   textSize(18);
   text("Although, Goosé managed to \nprotect her seedling from the \nnegative mud balls, some mud \ngot on Goosé...", 10, 325 );
 }
@@ -902,7 +1070,9 @@ function Screen10(){
   rose.pos={x:115, y: -155};
   goosee.pos={x:225, y: 200};
   goosee.rotation =0;
-  little.pos={x:160, y: 230};
+  little1.pos={x:160, y: 230};
+  little1.rotation =0;
+  little.pos={x:-160, y: -230};
   little.rotation =0;
   Muds.pos = { x: 240, y: 200 };
   Muds.rotation = 0;
@@ -926,8 +1096,8 @@ function Screen11(){
   rose.pos={x:115, y: -155};
   goosee.pos={x:225, y: 200};
   goosee.rotation =0;
-  little.pos={x:160, y: 230};
-  little.rotation =0;
+  little1.pos={x:160, y: 230};
+  little1.rotation =0;
   Muds.pos = { x: 240, y: 200 };
   Muds.rotation = 0;
   PeskyDirt1.pos = { x: 300, y: 230 };
@@ -957,8 +1127,8 @@ function Screen12(){
   rose.pos={x:-115, y: -155};
   goosee.pos={x:200, y: 200};
   goosee.rotation =0;
-  little.pos={x:160, y: -230};
-  little.rotation =0;
+  little1.pos={x:160, y: -230};
+  little1.rotation =0;
   Muds.pos = { x: -240, y: 200 };
   Muds.rotation = 0;
   PeskyDirt1.pos = { x: 190, y: 160 };
@@ -1003,10 +1173,10 @@ function Screen13(){
     //d:color(185,165,137)
   pinkflower.pos={x:115, y: -60};
   rose.pos={x:115, y: -155};
-  goosee.pos={x:225, y: 200};
+  goosee.pos={x:-225, y: -200};
   goosee.rotation =0;
-  little.pos={x:160, y: -230};
-  little.rotation =0;
+  little1.pos={x:160, y: -230};
+  little1.rotation =0;
   PeskyDirt1.pos = { x: 190, y: -160 };
   PeskyDirt1.rotation = 0;
   PeskyDirt2.pos = { x: 170, y: -190 };
@@ -1030,6 +1200,8 @@ function Screen13(){
   Button.pos = {x:340, y:350};
   Muds.pos = { x: -240, y: 200 };
   Muds.rotation = 0;
+  goosee2.pos={x:225, y: 200};
+  goosee2.rotation =0;
   textSize(18);
   text("Inside the mountain of dirt, Goosé \nfelt lost and sad because she \nbelieved the negative remarks that \nher seed wouldn't grow.", 10, 325 );
 }
@@ -1044,16 +1216,16 @@ function Screen14(){
     slow.pos={x:330, y: -160};
     cat.pos={x:40, y: -255};
     bara.pos={x:330, y:-50};
-    goosee.pos={x:330, y: -255};
+    goosee.pos={x:-330, y: -255};
   //color(134,71,65),
       //s:color(45,54,72),
       //d:color(185,165,137)
     pinkflower.pos={x:115, y: -60};
     rose.pos={x:115, y: -155};
-    goosee.pos={x:225, y: 200};
-    goosee.rotation =0;
-    little.pos={x:160, y: -230};
-    little.rotation =0;
+      goosee2.pos={x:225, y: 200};
+      goosee2.rotation =0;
+    little1.pos={x:160, y: -230};
+    little1.rotation =0;
     PeskyDirt1.pos = { x: 190, y: -160 };
     PeskyDirt1.rotation = 0;
     PeskyDirt2.pos = { x: 170, y: -190 };
@@ -1100,8 +1272,8 @@ function Screen15(){
     rose.pos={x:115, y: -155};
     goosee.pos={x:225, y: 200};
     goosee.rotation =0;
-    little.pos={x:160, y: -230};
-    little.rotation =0;
+    little1.pos={x:160, y: -230};
+    little1.rotation =0;
     PeskyDirt1.pos = { x: 190, y: -160 };
     PeskyDirt1.rotation = 0;
     PeskyDirt2.pos = { x: 170, y: -190 };
@@ -1125,6 +1297,8 @@ function Screen15(){
     Button.pos = {x:340, y:350};
     Muds.pos = { x: -240, y: 200 };
     Muds.rotation = 0;
+  goosee2.pos={x:-225, y: -200};
+  goosee2.rotation =0;
   textSize(18);
    text("But first, Goosé needed to get out \nof the mountain of negativity. ", 10, 330 );
 
@@ -1136,8 +1310,8 @@ function Screen16(){
   background(253, 253, 150);
   goosee.pos={x:200, y: 200};
   goosee.rotation =0;
-  little.pos={x:160, y: -230};
-  little.rotation =0;
+  little1.pos={x:160, y: -230};
+  little1.rotation =0;
   textSize(18);
   if (allow1 == true)
   {
@@ -1282,8 +1456,8 @@ function Screen17(){
     rose.pos={x:115, y: -155};
     goosee.pos={x:225, y: 200};
     goosee.rotation =0;
-    little.pos={x:160, y: -230};
-    little.rotation =0;
+    little1.pos={x:160, y: -230};
+    little1.rotation =0;
     PeskyDirt1.pos = { x: 190, y: -160 };
     PeskyDirt1.rotation = 0;
     PeskyDirt2.pos = { x: 170, y: -190 };
@@ -1326,15 +1500,15 @@ function Screen18(){
   rose.pos={x:115, y: -155};
   goosee.pos={x:225, y: 200};
   goosee.rotation =0;
-  little.pos={x:160, y: 230};
-  little.rotation =0;
+  little1.pos={x:160, y: 230};
+  little1.rotation =0;
   Muds.pos = { x: -240, y: 200 };
   Muds.rotation = 0;
   PeskyDirt1.pos = { x: 300, y: 230 };
   PeskyDirt1.rotation = 0;
   PeskyDirt2.pos = { x: 345, y: 230 };
   PeskyDirt2.rotation = 0;
-  PeskyDirt3.pos = { x: 322, y: F200 };
+  PeskyDirt3.pos = { x: 322, y: 200 };
   PeskyDirt3.rotation = 0;
   text("However, the negative mud won't \nleave her alone... ૮₍ ˃ ⤙ ˂ ₎ა ", 10, 330 );
 
@@ -1356,8 +1530,8 @@ function Screen19(){
   rose.pos={x:115, y: -155};
   goosee.pos={x:225, y: 200};
   goosee.rotation =0;
-  little.pos={x:160, y: 230};
-  little.rotation =0;
+  little1.pos={x:160, y: 230};
+  little1.rotation =0;
   Muds.pos = { x: 240, y: 200 };
   Muds.rotation = 0;
   PeskyDirt1.pos = { x: 300, y: 230 };
@@ -1386,8 +1560,8 @@ function Screen20(){
   rose.pos={x:115, y: -155};
   goosee.pos={x:225, y: 200};
   goosee.rotation =0;
-  little.pos={x:160, y: 230};
-  little.rotation =0;
+  little1.pos={x:160, y: 230};
+  little1.rotation =0;
   Muds.pos = { x: 240, y: 200 };
   Muds.rotation = 0;
   PeskyDirt1.pos = { x: 300, y: 230 };
@@ -1397,7 +1571,7 @@ function Screen20(){
   PeskyDirt3.pos = { x: 322, y: 200 };
   PeskyDirt3.rotation = 0;
   textSize(18);
-  text("...so Goosé decides to flatten the negative mud and us it as fertilizer for her seedling", 10, 330 );
+  text("...so Goosé decides to flatten the \nnegative mud and use it as \nfertilizer for her seedling", 10, 330 );
 }
 
 // Screen 21
@@ -1405,43 +1579,307 @@ function Screen20(){
 function Screen21(){
 
   background(253, 253, 150);
-  dinu.pos={x:40, y: -50};
-  busy.pos={x:40, y: -150};
-  slow.pos={x:330, y: -160};
-  cat.pos={x:40, y: -255};
-  bara.pos={x:330, y:-50};
+  dinu.pos={x:-40, y: -50};
+  busy.pos={x:-40, y: -150};
+  slow.pos={x:-330, y: -160};
+  cat.pos={x:-40, y: -255};
+  bara.pos={x:-330, y:-50};
 
-  pinkflower.pos={x:115, y: -60};
-  rose.pos={x:115, y: -155};
-  goosee.pos={x:225, y: -200};
+  pinkflower.pos={x:-115, y: -60};
+  rose.pos={x:-115, y: -155};
+  goosee.pos={x:-225, y: -200};
   goosee.rotation =0;
   
-  PeskyDirt1.pos = { x: 190, y: 6160 };
-  PeskyDirt1.rotation = 0;
-  PeskyDirt2.pos = { x: 170, y: 190 };
-  PeskyDirt2.rotation = 0;
-  PeskyDirt3.pos = { x: 210, y: 190 };
-  PeskyDirt3.rotation = 0;
-  PeskyDirt4.pos = { x: 160, y: 220 }; 
-  PeskyDirt4.rotation = 0;
-  PeskyDirt5.pos = { x: 190, y: 220 };
-  PeskyDirt5.rotation = 0;
-  PeskyDirt6.pos = { x: 220, y: 220 };
-  PeskyDirt6.rotation = 0;
-  PeskyDirt7.pos = { x: 150, y: 250 };
-  PeskyDirt7.rotation = 0;
-  PeskyDirt8.pos = { x: 180, y: 250 };
-  PeskyDirt8.rotation = 0;
-  PeskyDirt9.pos = { x: 205, y: 250 };
-  PeskyDirt9.rotation = 0;
-  PeskyDirt10.pos = { x: 230, y: 250 };
-  PeskyDirt10.rotation = 0;
-  Button.pos = {x:340, y:-350};
+  
+  Button.pos = {x:-340, y:-350};
   Muds.pos = { x: -240, y: 200 };
   Muds.rotation = 0;
-  text("Drag the mud balls to the seed" , 50, 390 );
+  text("Drag and the mud balls to the seed" , 50, 390 );
+  
+  little1.rotation =0;
 
-  little.rotation =0;
+  
+ 
+  
+  
+  
+ 
+  
+
+  if (PeskyDirt10.mouse.dragging()) {
+    PeskyDirt10.moveTowards(
+    mouse.x + PeskyDirt10.mouse.x,
+    mouse.y + PeskyDirt10.mouse.y,
+    1 // full tracking
+  );
+  if (PeskyDirt10.collides(little1))
+  {
+    allows10 = false;
+  }
+
+  }
+  else
+  {
+  if(allows10 == true)
+  {
+    PeskyDirt10.pos = { x: 230, y: 250 };
+    PeskyDirt10.rotation = 0;
+
+  }
+  else
+  {
+    PeskyDirt10.pos = { x: 230, y: -250 };
+    PeskyDirt10.rotation = 0;
+  }
+
+  }
+  
+  if (PeskyDirt1.mouse.dragging()) {
+      PeskyDirt1.moveTowards(
+      mouse.x + PeskyDirt1.mouse.x,
+      mouse.y + PeskyDirt1.mouse.y,
+      1 // full tracking
+    );
+    if (PeskyDirt1.collides(little1))
+    {
+      allows1 = false;
+    }
+    
+  }
+  else
+  {
+    if(allows1 == true)
+    {
+      PeskyDirt1.pos = { x: 190, y: 160 };
+      PeskyDirt1.rotation = 0;
+    }
+    else
+    {
+      PeskyDirt1.pos = { x: 230, y: -250 };
+      PeskyDirt1.rotation = 0;
+    }
+    
+  }
+
+  if (PeskyDirt2.mouse.dragging()) {
+    PeskyDirt2.moveTowards(
+    mouse.x + PeskyDirt2.mouse.x,
+    mouse.y + PeskyDirt2.mouse.y,
+    1 // full tracking
+  );
+  if (PeskyDirt2.collides(little1))
+  {
+    allows2 = false;
+  }
+
+  }
+  else
+  {
+  if(allows2 == true)
+  {
+    PeskyDirt2.pos = { x: 170, y: 190 };
+    PeskyDirt2.rotation = 0;
+  }
+  else
+  {
+    PeskyDirt2.pos = { x: 230, y: -250 };
+    PeskyDirt2.rotation = 0;
+  }
+
+  }
+
+  if (PeskyDirt3.mouse.dragging()) {
+    PeskyDirt3.moveTowards(
+    mouse.x + PeskyDirt3.mouse.x,
+    mouse.y + PeskyDirt3.mouse.y,
+    1 // full tracking
+  );
+  if (PeskyDirt3.collides(little1))
+  {
+    allows3 = false;
+  }
+
+  }
+  else
+  {
+  if(allows3 == true)
+  {
+    PeskyDirt3.pos = { x: 210, y: 190 };
+    PeskyDirt3.rotation = 0;
+  }
+  else
+  {
+    PeskyDirt3.pos = { x: 230, y: -250 };
+    PeskyDirt3.rotation = 0;
+  }
+
+  }
+
+  if (PeskyDirt4.mouse.dragging()) {
+    PeskyDirt4.moveTowards(
+    mouse.x + PeskyDirt4.mouse.x,
+    mouse.y + PeskyDirt4.mouse.y,
+    1 // full tracking
+  );
+  if (PeskyDirt4.collides(little1))
+  {
+    allows4 = false;
+  }
+
+  }
+  else
+  {
+  if(allows4 == true)
+  {
+    PeskyDirt4.pos = { x: 160, y:220 }; 
+    PeskyDirt4.rotation = 0;
+  }
+  else
+  {
+    PeskyDirt4.pos = { x: 230, y: -250 };
+    PeskyDirt4.rotation = 0;
+  }
+
+  }
+
+  if (PeskyDirt5.mouse.dragging()) {
+    PeskyDirt5.moveTowards(
+    mouse.x + PeskyDirt5.mouse.x,
+    mouse.y + PeskyDirt5.mouse.y,
+    1 // full tracking
+  );
+  if (PeskyDirt5.collides(little1))
+  {
+    allows5 = false;
+  }
+
+  }
+  else
+  {
+  if(allows5 == true)
+  {
+    PeskyDirt5.pos = { x: 190, y: 220 };
+    PeskyDirt5.rotation = 0;
+  }
+  else
+  {
+    PeskyDirt5.pos = { x: 230, y: -250 };
+    PeskyDirt5.rotation = 0;
+  }
+
+  }
+
+  if (PeskyDirt6.mouse.dragging()) {
+    PeskyDirt6.moveTowards(
+    mouse.x + PeskyDirt6.mouse.x,
+    mouse.y + PeskyDirt6.mouse.y,
+    1 // full tracking
+  );
+  if (PeskyDirt6.collides(little1))
+  {
+    allows6 = false;
+  }
+
+  }
+  else
+  {
+  if(allows6 == true)
+  {
+    PeskyDirt6.pos = { x: 220, y: 220 };
+    PeskyDirt6.rotation = 0;
+   
+  }
+  else
+  {
+    PeskyDirt6.pos = { x: 230, y: -250 };
+    PeskyDirt6.rotation = 0;
+  }
+
+  }
+
+  if (PeskyDirt7.mouse.dragging()) {
+    PeskyDirt7.moveTowards(
+    mouse.x + PeskyDirt7.mouse.x,
+    mouse.y + PeskyDirt7.mouse.y,
+    1 // full tracking
+  );
+  if (PeskyDirt7.collides(little1))
+  {
+    allows7 = false;
+  }
+
+  }
+  else
+  {
+  if(allows7 == true)
+  {
+    PeskyDirt7.pos = { x: 150, y: 250 };
+    PeskyDirt7.rotation = 0;
+    
+  }
+  else
+  {
+    PeskyDirt7.pos = { x: 230, y: -250 };
+    PeskyDirt7.rotation = 0;
+  }
+
+  }
+
+  if (PeskyDirt8.mouse.dragging()) {
+    PeskyDirt8.moveTowards(
+    mouse.x + PeskyDirt8.mouse.x,
+    mouse.y + PeskyDirt8.mouse.y,
+    1 // full tracking
+  );
+  if (PeskyDirt8.collides(little1))
+  {
+    allows8 = false;
+  }
+
+  }
+  else
+  {
+  if(allows8 == true)
+  {
+    PeskyDirt8.pos = { x: 180, y: 250 };
+    PeskyDirt8.rotation = 0;
+  }
+  else
+  {
+    PeskyDirt8.pos = { x: 230, y: -250 };
+    PeskyDirt8.rotation = 0;
+  }
+
+  }
+
+  if (PeskyDirt9.mouse.dragging()) {
+    PeskyDirt9.moveTowards(
+    mouse.x + PeskyDirt9.mouse.x,
+    mouse.y + PeskyDirt9.mouse.y,
+    1 // full tracking
+  );
+  if (PeskyDirt9.collides(little1))
+  {
+    allows9 = false;
+  }
+
+  }
+  else
+  {
+  if(allows9 == true)
+  {
+    PeskyDirt9.pos = { x: 205, y: 250 };
+    PeskyDirt9.rotation = 0;
+
+  }
+  else
+  {
+    PeskyDirt9.pos = { x: 230, y: -250 };
+    PeskyDirt9.rotation = 0;
+  }
+
+  }
+
 }
 
 // Screen 22
@@ -1484,8 +1922,10 @@ function Screen22(){
   Button.pos = {x:340, y:350};
   Muds.pos = { x: -240, y: 200 };
   Muds.rotation = 0;
+  little1.pos={x:160, y: 230};
+  little1.rotation =0;
   textSize(18);
-  text("Goosé took care of seedling day and night", 10, 330 );
+  text("Goosé took care of seedling \nday and night", 10, 330 );
 }
 
 // Screen 23
@@ -1528,8 +1968,11 @@ function Screen23(){
   Button.pos = {x:340, y:350};
   Muds.pos = { x: -240, y: 200 };
   Muds.rotation = 0;
+
+  little1.pos={x:160, y: 230};
+  little1.rotation =0;
   textSize(18);
-  text("Goosé poured all her love into the well being of her plant", 10, 330 );
+  text("Goosé poured all her love into \nthe well being of her plant <3", 10, 330 );
 
 }
 
@@ -1538,7 +1981,7 @@ function Screen23(){
 // Screen 25
 //rain
 function Screen24(){
-  background(253, 253, 150);
+  background(bgImg);
   Button.pos = {x:340, y:350};
   dinu.pos={x:40, y: -50};
   busy.pos={x:40, y: -150};
@@ -1575,15 +2018,19 @@ function Screen24(){
   Button.pos = {x:340, y:350};
   Muds.pos = { x: -240, y: 200 };
   Muds.rotation = 0;
-  textSize(18);
-  text("Even on the worst days, Goosé never stopped taking care of her seedling ", 10, 330 );
+  little1.pos={x:160, y: 230};
+  little1.rotation =0;
+  textSize(22);
+  fill("white");
+  text("Even on the worst days, \nGoosé never stopped taking \ncare of her seedling ", 10, 330 );
 
 }
 
 // Screen 26
 // shake of earth
-function Screen26(){
+function Screen25(){
   background(253, 253, 150);
+  fill("black");
   Button.pos = {x:340, y:350};
   dinu.pos={x:40, y: -50};
   busy.pos={x:40, y: -150};
@@ -1595,8 +2042,8 @@ function Screen26(){
   rose.pos={x:115, y: -155};
   goosee.pos={x:225, y: 200};
   goosee.rotation =0;
-  little.pos={x:160, y: -230};
-  little.rotation =0;
+  little1.pos={x:160, y: -230};
+  little1.rotation =0;
   PeskyDirt1.pos = { x: 190, y: -160 };
   PeskyDirt1.rotation = 0;
   PeskyDirt2.pos = { x: 170, y: -190 };
@@ -1619,8 +2066,10 @@ function Screen26(){
   PeskyDirt10.rotation = 0;
   Button.pos = {x:340, y:350};
   Muds.pos = { x: -240, y: 200 };
+  little.pos={x:160, y: 230};
+  little.rotation =0;
   Muds.rotation = 0;
-  text("One day, her plant finally surfaced and it wasn't before long... " + screen, 10, 330 );
+  text("One day, her plant finally \nsurfaced and it wasn't \nbefore long... " ,10, 330 );
 
 }
 
@@ -1628,8 +2077,8 @@ function Screen26(){
 
 // Screen 28
 // show her standing on a giant marigold in the middle of the sky
-function Screen27(){
-  background(253, 253, 150);
+function Screen26(){
+  background(bgImg2);
   dinu.pos={x:40, y: -50};
   busy.pos={x:40, y: -150};
   slow.pos={x:330, y: -160};
@@ -1638,8 +2087,7 @@ function Screen27(){
 
   pinkflower.pos={x:115, y: -60};
   rose.pos={x:115, y: -155};
-  goosee.pos={x:225, y: 200};
-  goosee.rotation =0;
+  
   little.pos={x:160, y: -230};
   little.rotation =0;
   PeskyDirt1.pos = { x: 190, y: -160 };
@@ -1664,44 +2112,48 @@ function Screen27(){
   PeskyDirt10.rotation = 0;
   Button.pos = {x:340, y:-350};
   Muds.pos = { x: -240, y: 200 };
+  mainFlower.pos = { x: 185, y: 300 };
+  mainFlower.rotation = 0;
+  goosee.pos={x:225, y: 200};
+  goosee.rotation =0;
   Muds.rotation = 0;
-  text("...Goosé's plant grew so big that it reached the stars" + screen, 10, 330 );
+  little1.pos={x:-160, y: -230};
+  little1.rotation =0;
+  fill("white");
+  text("...Goosé's plant grew so big \nthat it reached the stars", 90, 50 );
 
 }
 //if extra time, make goose big on screen 2
 // make all seeds in screen 1 and seed in screen 2
 //put heart in screen 2
 //tear on goose screen10+14+15
+
 function changeTarget(){
   
-
-  if (screen == 3){
-    little.x = 330;
-    little.y = 330;
-      position = random(1,5);
-    if (position == 1) {
-       little.x = 30;
-       little.y = 30;
-    }
-    else if (position == 2)
-    {
-           little.x = 30;
-           little.y = 330;
-    }
-    else if (position == 3)
-      {
-             little.x = 330;
-             little.y = 330;
-      }
-    else if (position == 4)
-      {
-             little.x = 330;
-             little.y = 30;
-      }
-
+ if (screen == 21){
+   position = Math.floor(random(1, 5)); // Ensure integer positions
+   switch (position) {
+       case 1:
+           little1.pos = { x: 30, y: 30 };
+           break;
+       case 2:
+           little1.pos = { x: 30, y: 330 };
+           break;
+       case 3:
+           little1.pos = { x: 330, y: 330 };
+           break;
+       case 4:
+           little1.pos = { x: 330, y: 30 };
+           break;
+       default:
+           little1.pos = { x: 265, y: 280 }; // Default position
+   }
+ }
+   
+  
 
     
-  }
+  
 
   
   
